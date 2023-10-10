@@ -1,27 +1,19 @@
-from collections import namedtuple
-
 import pygame
 from colors import Colors
+from game import Game
+from direction import Direction
+from agent import Agent, train
 
-DIMENSIONS = (640, 480)
+DIMENSIONS = (240 * 2*2, 240 * 2*2)
 
 pygame.init()
-pygame.display.set_mode(DIMENSIONS)
+display = pygame.display.set_mode(DIMENSIONS)
 pygame.display.set_caption("Snake PyGame")
-# font = pygame.font.Font('aria.ttf', 25)
+font = pygame.font.Font('arial.ttf', 25)
 
 blackColor = Colors.Black.value
 
-
-
 running = True
 
-
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    pygame.display.flip()
-
-pygame.quit()
+game = Game(display, pygame, font, DIMENSIONS)
+train(game)
